@@ -1,0 +1,11 @@
+
+POST http://localhost:5048/Person
+Content-Type: application/json
+
+{
+    "Name" : "Pablito2424",
+    "Description" : "Otra persona24242",
+    "StartDateTime" : "2022-04-08T08:00:00",
+    "EndDateTime" : "2022-04-08T08:01:00"
+}
+

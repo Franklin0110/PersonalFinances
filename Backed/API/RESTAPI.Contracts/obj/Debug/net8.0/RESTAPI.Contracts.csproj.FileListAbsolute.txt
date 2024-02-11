@@ -1,0 +1,12 @@
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\bin\Debug\net8.0\RESTAPI.Contracts.deps.json
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\bin\Debug\net8.0\RESTAPI.Contracts.dll
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\bin\Debug\net8.0\RESTAPI.Contracts.pdb
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\RESTAPI.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\RESTAPI.Contracts.AssemblyInfoInputs.cache
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\RESTAPI.Contracts.AssemblyInfo.cs
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\RESTAPI.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\RESTAPI.Contracts.sourcelink.json
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\RESTAPI.Contracts.dll
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\refint\RESTAPI.Contracts.dll
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\RESTAPI.Contracts.pdb
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI.Contracts\obj\Debug\net8.0\ref\RESTAPI.Contracts.dll
