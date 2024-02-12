@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "USNAT9IZBF1iykEgxH7gkkLQBidTLGw/IafcfSLRTv58JnEbIoP1tcvNlIhUKp+pWsy0HVfrFcCWJDNYqVQFLg==",
+  "dgSpecHash": "T/iyi8u8J1sZ+0iCmsrTPDoPmsFayiiYSaM8/S/Nl5m+vQSzrEn8Nl/uaFa/Y5iRm54RV18m58qipB5OYJnWLQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Covar\\Documents\\PersonalFinances\\Backed\\API\\RESTAPI\\RESTAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Covar\\.nuget\\packages\\erroror\\1.9.0\\erroror.1.9.0.nupkg.sha512",
     "C:\\Users\\Covar\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.1\\microsoft.aspnetcore.openapi.8.0.1.nupkg.sha512",
     "C:\\Users\\Covar\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512"
   ],

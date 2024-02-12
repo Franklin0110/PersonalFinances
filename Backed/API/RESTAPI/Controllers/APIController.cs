@@ -65,12 +65,24 @@ public class APIController : ControllerBase
     [HttpPut("{id:guid}")]
     public IActionResult UpsertPerson(Guid id, UpSertPerson request)
     {
-        return Ok(request);
+        var person = new Person(
+          id,
+          request.Name,
+          request.Description,
+          request.StartDateTime,
+          request.EndDateTime,
+          DateTime.UtcNow
+      );
+        _PersonService.UpsertPerson(person);
+
+        // TODO: return 201 if a new breakfast was created
+        return NoContent();
     }
 
     [HttpDelete("{id:guid}")]
     public IActionResult DeletePerson(Guid id)
     {
-        return Ok(id);
+        _PersonService.DeletePerson(id);
+        return NoContent();
     }
 }
