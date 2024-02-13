@@ -31,3 +31,4 @@ C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI\obj\Debug\net8.0\re
 C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI\obj\Debug\net8.0\RESTAPI.pdb
 C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI\obj\Debug\net8.0\RESTAPI.genruntimeconfig.cache
 C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI\obj\Debug\net8.0\ref\RESTAPI.dll
+C:\Users\Covar\Documents\PersonalFinances\Backed\API\RESTAPI\bin\Debug\net8.0\ErrorOr.dll

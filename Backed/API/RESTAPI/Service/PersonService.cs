@@ -1,4 +1,6 @@
-using RESTAPI.Moderls;
+using ErrorOr;
+using RESTAPI.Models;
+using RESTAPI.ServiceErrors;
 
 namespace RESTAPI.Service;
 
@@ -15,9 +17,13 @@ public class PersonService : IPersonService
         _person.Remove(id);
     }
 
-    public Person GetPerson(Guid id)
+    public ErrorOr<Person> GetPerson(Guid id)
     {
-        return _person[id];
+        if (_person.TryGetValue(id, out var person1))
+        {
+            return person1;
+        }
+        return Errors.Person.NotFound;
     }
 
     public Person UpsertPerson(Person person)

@@ -1,4 +1,4 @@
-namespace RESTAPI.Moderls;
+namespace RESTAPI.Models;
 
 public class Person
 {

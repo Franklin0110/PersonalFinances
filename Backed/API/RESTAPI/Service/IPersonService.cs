@@ -1,12 +1,13 @@
+using ErrorOr;
 using RESTAPI.Contracts;
-using RESTAPI.Moderls;
+using RESTAPI.Models;
 
 namespace RESTAPI.Service;
 
 public interface IPersonService
 {
     void CreatePerson(Person person);
-    Person GetPerson(Guid id);
+    ErrorOr<Person> GetPerson(Guid id);
 
     Person UpsertPerson(Person person);
     void DeletePerson(Guid id);
