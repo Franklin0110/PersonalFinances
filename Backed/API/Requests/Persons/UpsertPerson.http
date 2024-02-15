@@ -1,11 +1,11 @@
-@id = 00000000-0000-0000-0000-000000000000
+@id = ddd92213-acf5-448a-bcb9-5bd6886f1a50
 
 PUT http://localhost:5048/Person/{{id}}
 Content-Type: application/json
 
 {
-    "Name" : "Pablito",
-    "Description" : "Otra persona",
+    "Name" : "Pablito210",
+    "Description" : "Otra persona con otras cosas",
     "StartDateTime" : "2022-04-08T08:00:00",
     "EndDateTime" : "2022-04-08T08:01:00"
 }

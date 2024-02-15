@@ -83,10 +83,11 @@ public class PersonController : ApiController
           request.EndDateTime,
           DateTime.UtcNow
       );
-        _PersonService.UpsertPerson(person);
+        ErrorOr<Person> personResult = _PersonService.UpsertPerson(person);
 
-        // TODO: return 201 if a new breakfast was created
-        return NoContent();
+        return personResult.Match(
+             Person => Ok(MapPersonResponse(Person)),
+             errors => Problem(errors));
     }
 
     [HttpDelete("{id:guid}")]

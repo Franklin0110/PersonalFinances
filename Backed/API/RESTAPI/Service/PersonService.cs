@@ -26,7 +26,7 @@ public class PersonService : IPersonService
         return Errors.Person.NotFound;
     }
 
-    public Person UpsertPerson(Person person)
+    public ErrorOr<Person> UpsertPerson(Person person)
     {
         _person[person.Id] = person;
         return _person[person.Id];

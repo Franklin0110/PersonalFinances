@@ -9,6 +9,6 @@ public interface IPersonService
     void CreatePerson(Person person);
     ErrorOr<Person> GetPerson(Guid id);
 
-    Person UpsertPerson(Person person);
+    ErrorOr<Person> UpsertPerson(Person person);
     void DeletePerson(Guid id);
 }
