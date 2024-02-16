@@ -28,7 +28,6 @@ public class PersonController : ApiController
         request.EndDateTime,
         DateTime.UtcNow
         );
-
         if (requestToBreakFastResult.IsError) return Problem(requestToBreakFastResult.Errors);
 
         var person = requestToBreakFastResult.Value;
