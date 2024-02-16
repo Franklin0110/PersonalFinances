@@ -6,10 +6,10 @@ namespace RESTAPI.Models;
 public class Person
 {
     public const int MinNameLenght = 3;
-    public const int MaxNameLenght = 15;
+    public const int MaxNameLenght = 30;
 
     public const int MinDescriptionLenght = 3;
-    public const int MaxDescriptionLenght = 15;
+    public const int MaxDescriptionLenght = 30;
 
     public Guid Id { get; }
     public string Name { get; }
