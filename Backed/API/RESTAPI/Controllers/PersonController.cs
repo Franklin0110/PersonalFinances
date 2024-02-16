@@ -20,22 +20,22 @@ public class PersonController : ApiController
     [HttpPost]
     public IActionResult CreatePerson(PersonCreate request)
     {
-        //We Create a new person and we add an ID and the time of creation
-        var person = new Person(
-        Guid.NewGuid(),
+        //We Create a new person
+        ErrorOr<Person> requestToBreakFastResult = Person.Create(
         request.Name,
         request.Description,
         request.StartDateTime,
         request.EndDateTime,
         DateTime.UtcNow
         );
+
+        if (requestToBreakFastResult.IsError) return Problem(requestToBreakFastResult.Errors);
+
+        var person = requestToBreakFastResult.Value;
         //Calling a service from the dependency injection
         ErrorOr<Created> ServiceResponse = _PersonService.CreatePerson(person);
-        if (ServiceResponse.IsError)
-        {
-            //These errros were created in the Error class.
-            return Problem(ServiceResponse.Errors);
-        }
+
+        if (ServiceResponse.IsError) return Problem(ServiceResponse.Errors);
         else
         {
             //Returns to the client, the name of the action, values and the whole JSON

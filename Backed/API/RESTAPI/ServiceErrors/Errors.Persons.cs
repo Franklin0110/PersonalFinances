@@ -11,7 +11,14 @@ public static class Errors
                 code: "Person.NotFound",
                 description: "Person not found"
         );
-
+        public static Error InvalidName => Error.Validation(
+              code: "PersonName.NotValid",
+              description: $"Person Name is not valid, the name needs to have between {Models.Person.MinNameLenght} and {Models.Person.MaxNameLenght}"
+      );
+        public static Error InvalidDescription => Error.Validation(
+                  code: "PersonName.NotValid",
+                  description: $"Person Name is not valid, the name needs to have between {Models.Person.MinDescriptionLenght} and {Models.Person.MaxDescriptionLenght}"
+          );
 
 
     }

@@ -1,7 +1,16 @@
+using ErrorOr;
+using RESTAPI.ServiceErrors;
+
 namespace RESTAPI.Models;
 
 public class Person
 {
+    public const int MinNameLenght = 3;
+    public const int MaxNameLenght = 15;
+
+    public const int MinDescriptionLenght = 3;
+    public const int MaxDescriptionLenght = 15;
+
     public Guid Id { get; }
     public string Name { get; }
 
@@ -26,4 +35,33 @@ public class Person
         LastModifiedDateTime = lastModifiedDateTime;
     }
 
+    public static ErrorOr<Person> Create(string Name,
+        string Description,
+        DateTime StartDateTime,
+        DateTime EndDateTime,
+        DateTime LastModifiedDateTime)
+    {
+        List<Error> errors = new();
+        if (Name.Length is < MinNameLenght or > MaxNameLenght)
+        {
+            errors.Add(Errors.Person.InvalidName);
+        }
+        if (Description.Length is < MinDescriptionLenght or > MaxDescriptionLenght)
+        {
+            errors.Add(Errors.Person.InvalidDescription);
+        }
+        if (errors.Count > 0)
+        {
+            return errors;
+        }
+        return new Person(
+        Guid.NewGuid(),
+        Name,
+        Description,
+        StartDateTime,
+        EndDateTime,
+        DateTime.UtcNow
+        );
+
+    }
 }
