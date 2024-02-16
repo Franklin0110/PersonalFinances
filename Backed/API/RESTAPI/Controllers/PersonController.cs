@@ -10,17 +10,17 @@ namespace RESTAPI.Controllers;
 [Route("Person")]
 public class PersonController : ApiController
 {
+    //Dependency injection
     private readonly IPersonService _PersonService;
-
     public PersonController(IPersonService personService)
     {
         _PersonService = personService;
     }
-
-
+    //CreatePerson Method when A post requested is made.
     [HttpPost]
     public IActionResult CreatePerson(PersonCreate request)
     {
+        //We Create a new person and we add an ID and the time of creation
         var person = new Person(
         Guid.NewGuid(),
         request.Name,
@@ -29,14 +29,16 @@ public class PersonController : ApiController
         request.EndDateTime,
         DateTime.UtcNow
         );
-
+        //Calling a service from the dependency injection
         ErrorOr<Created> ServiceResponse = _PersonService.CreatePerson(person);
         if (ServiceResponse.IsError)
         {
+            //These errros were created in the Error class.
             return Problem(ServiceResponse.Errors);
         }
         else
         {
+            //Returns to the client, the name of the action, values and the whole JSON
             return CreatedAtAction(
                 actionName: nameof(GetPerson),
                 routeValues: new { id = person.Id },
@@ -95,8 +97,6 @@ public class PersonController : ApiController
             deleted => NoContent(),
             errors => Problem(errors));
     }
-
-
     private static PersonResponse MapPersonResponse(Person person)
     {
         return new PersonResponse(
