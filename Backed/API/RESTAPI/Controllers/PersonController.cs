@@ -17,6 +17,7 @@ public class PersonController : ApiController
         _PersonService = personService;
     }
 
+
     [HttpPost]
     public IActionResult CreatePerson(PersonCreate request)
     {
@@ -29,47 +30,34 @@ public class PersonController : ApiController
         DateTime.UtcNow
         );
 
-        _PersonService.CreatePerson(person);
-
-        var response = new PersonResponse(
-            person.Id,
-            person.Name,
-            person.Description,
-            person.StartDateTime,
-            person.EndDateTime,
-            person.LastModifiedDateTime
-        );
-
-        return CreatedAtAction(
-            actionName: nameof(GetPerson),
-            routeValues: new { id = person.Id },
-            value: response);
+        ErrorOr<Created> ServiceResponse = _PersonService.CreatePerson(person);
+        if (ServiceResponse.IsError)
+        {
+            return Problem(ServiceResponse.Errors);
+        }
+        else
+        {
+            return CreatedAtAction(
+                actionName: nameof(GetPerson),
+                routeValues: new { id = person.Id },
+                value: MapPersonResponse(person));
+        }
     }
 
     [HttpGet("{id:guid}")]
     public IActionResult GetPerson(Guid id)
     {
-        ErrorOr<Person> personResult = _PersonService.GetPerson(id);
-        return personResult.Match(
-            Person => Ok(MapPersonResponse(Person)),
-            errors => Problem(errors));
-
-        //  var person = personResult.Value;
-        //  PersonResponse response = MapPersonResponse(person);
-
-        //  return Ok(response);
-    }
-
-    private static PersonResponse MapPersonResponse(Person person)
-    {
-        return new PersonResponse(
-                   person.Id,
-                   person.Name,
-                   person.Description,
-                   person.StartDateTime,
-                   person.EndDateTime,
-                   person.LastModifiedDateTime
-               );
+        ErrorOr<Person> ServiceResponse = _PersonService.GetPerson(id);
+        if (ServiceResponse.IsError)
+        {
+            return Problem(ServiceResponse.Errors);
+        }
+        else
+        {
+            return ServiceResponse.Match(
+                Person => Ok(MapPersonResponse(Person)),
+                errors => Problem(errors));
+        }
     }
 
     [HttpPut("{id:guid}")]
@@ -83,17 +71,42 @@ public class PersonController : ApiController
           request.EndDateTime,
           DateTime.UtcNow
       );
-        ErrorOr<Person> personResult = _PersonService.UpsertPerson(person);
 
-        return personResult.Match(
-             Person => Ok(MapPersonResponse(Person)),
-             errors => Problem(errors));
+        ErrorOr<Updated> ServiceResponse = _PersonService.UpsertPerson(person);
+        if (ServiceResponse.IsError)
+        {
+            return Problem(ServiceResponse.Errors);
+        }
+        else
+        {
+            return ServiceResponse.Match(
+                 Updated => Ok(),
+                 errors => Problem(errors));
+        }
     }
 
     [HttpDelete("{id:guid}")]
     public IActionResult DeletePerson(Guid id)
     {
-        _PersonService.DeletePerson(id);
-        return NoContent();
+        ErrorOr<Deleted> ServiceResponse = _PersonService.DeletePerson(id);
+
+
+        return ServiceResponse.Match(
+            deleted => NoContent(),
+            errors => Problem(errors));
+    }
+
+
+    private static PersonResponse MapPersonResponse(Person person)
+    {
+        return new PersonResponse(
+                   person.Id,
+                   person.Name,
+                   person.Description,
+                   person.StartDateTime,
+                   person.EndDateTime,
+                   person.LastModifiedDateTime
+               );
     }
 }
+

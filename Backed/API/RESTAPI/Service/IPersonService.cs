@@ -6,9 +6,8 @@ namespace RESTAPI.Service;
 
 public interface IPersonService
 {
-    void CreatePerson(Person person);
+    ErrorOr<Created> CreatePerson(Person person);
     ErrorOr<Person> GetPerson(Guid id);
-
-    ErrorOr<Person> UpsertPerson(Person person);
-    void DeletePerson(Guid id);
+    ErrorOr<Updated> UpsertPerson(Person person);
+    ErrorOr<Deleted> DeletePerson(Guid id);
 }
